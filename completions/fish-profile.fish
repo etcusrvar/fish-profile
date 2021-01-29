@@ -6,9 +6,8 @@ function __fish_profile_completion_names
     # Parse existing history files for names of previously used profiles
     for f in $__fish_user_data_dir/*_history
         printf "%s\n" (
-            basename $f |
-            grep -v '^private_' |
-            sed -E "s/(_[0-9]+)*_history//"
+            string replace -r '.*/(.*)_history$' '$1' $f |
+            string match -rv '^private_'
         )
     end
 end
