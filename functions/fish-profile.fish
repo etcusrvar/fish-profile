@@ -1,8 +1,8 @@
 function fish-profile -d "Work with fish profiles and private mode"
 
     set options \
-        (fish_opt -s p -l prune --long-only) \
-        (fish_opt -s u -l use --long-only) \
+        (fish_opt -s p -l prune) \
+        (fish_opt -s u -l use) \
         (fish_opt -s h -l help --long-only)
     argparse \
         --stop-nonopt \
@@ -33,8 +33,8 @@ function __fish_profile_help
 Open a new fish shell with PROFILE, or the default profile if not provided.
 
 Options:
-      --prune       Prune orphaned private history files
-      --use         Switch to PROFILE in current session
+  -p, --prune       Prune orphaned private history files
+  -u, --use         Switch to PROFILE in current session
       --help        Show this help message and exit"
 end
 
