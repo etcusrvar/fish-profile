@@ -1,10 +1,10 @@
 # Set __fish_private_mode_settable if fish_private_mode is settable
 # Toggle, test, reset for both conditions
-if set -q fish_private_mode
+if set -gq fish_private_mode
 
     set -l _fish_private_mode $fish_private_mode
-    set -e fish_private_mode &>/dev/null
-    if not set -q fish_private_mode
+    set -ge fish_private_mode &>/dev/null
+    if not set -gq fish_private_mode
         set -g __fish_private_mode_settable 1
         set -g fish_private_mode $_fish_private_mode
     end
@@ -16,9 +16,9 @@ if set -q fish_private_mode
 else
 
     set -g fish_private_mode 1 &>/dev/null
-    if set -q fish_private_mode
+    if set -gq fish_private_mode
         set -g __fish_private_mode_settable 1
-        set -e fish_private_mode
+        set -ge fish_private_mode
     end
 
 end
