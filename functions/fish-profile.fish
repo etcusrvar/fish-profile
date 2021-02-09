@@ -45,7 +45,7 @@ function __fish_profile_prune
     set -gq __fish_private_mode_settable && return 0
 
     for f in $__fish_user_data_dir/private_*_history
-        set -l pid (echo $f | sed 's/.*\/private_.*_\([0-9]*\)_history/\1/')
+        set -l pid (echo $f | string replace -r '.*/private_.*_([0-9]+)_history' '$1')
         if test -d /proc/$pid
             if ! test (basename (realpath /proc/$pid/exe)) = fish
                 rm -v $f
